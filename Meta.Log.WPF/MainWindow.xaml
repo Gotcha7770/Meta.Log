@@ -4,7 +4,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Meta.Log.WPF"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Medium"
@@ -12,12 +11,6 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="Meta.Log" 
         Height="450" Width="800">
-
-    <Window.CommandBindings>
-        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" 
-                        Executed="CommandBinding_Executed"
-                        CanExecute="CommandBinding_CanExecute"/>
-    </Window.CommandBindings>
     
     <ScrollViewer>
         <Grid>
