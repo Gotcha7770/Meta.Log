@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.Windows;
+using Meta.Log.Core.ViewModels;
 
 namespace Meta.Log.WPF
 {
@@ -12,42 +13,33 @@ namespace Meta.Log.WPF
     /// </summary>
     public partial class App : Application
     {
-        private IHost _host;
+        private readonly IHost _host;
 
         public App()
         {
-            _host = Host
-                .CreateDefaultBuilder()
-                //.UseServiceProviderFactory(new SplatServiceProviderFactory())
+            _host = Host.CreateDefaultBuilder()
                 .ConfigureSplat()
-                .ConfigureServices((context, services) =>
-                {
-                })
-                .ConfigureLogging((context, logging) =>
-                {
-                    logging.AddSerilog();
-                })
-                //.UseSerilog()
-                .ConfigureWpf()
+                .ConfigureServices((context, services) => { })
+                .ConfigureLogging((context, logging) => { logging.AddSerilog(); })
+                .StartWith<MainWindow, MainViewModel>()
                 .Build();
-
-            // var container = _host.Services;
-            // container.UseMicrosoftDependencyResolver();
         }
 
-        private async void Application_Startup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            await _host.StartAsync();
+            base.OnStartup(e);
 
-            var mainWindow = _host.Services.GetService<MainWindow>();
+            _host.Start();
+
+            var mainWindow = _host.Services.GetService<Window>();
             mainWindow.Show();
         }
 
-        private async void Application_Exit(object sender, ExitEventArgs e)
+        protected override void OnExit(ExitEventArgs e)
         {
             using (_host)
             {
-                await _host.StopAsync(TimeSpan.FromSeconds(5));
+                _host.StopAsync(TimeSpan.FromSeconds(5)).GetAwaiter().GetResult();
             }
         }
     }

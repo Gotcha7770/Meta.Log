@@ -7,20 +7,11 @@ namespace Meta.Log.WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IViewFor<MainViewModel>
+    public partial class MainWindow : ReactiveWindow<MainViewModel>
     {
-
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        public MainViewModel ViewModel { get; set; }
-
-        object IViewFor.ViewModel
-        {
-            get => ViewModel; 
-            set => ViewModel = value as MainViewModel;
         }
     }
 }
