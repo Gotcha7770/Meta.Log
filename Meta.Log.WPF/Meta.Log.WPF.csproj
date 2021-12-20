@@ -11,12 +11,21 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="ReactiveUI.WPF" Version="16.3.10" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="4.2.0" />
+    <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="14.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Meta.Log.Core\Meta.Log.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,23 +1,26 @@
-﻿using System.Windows;
+﻿using Meta.Log.Core.ViewModels;
+using ReactiveUI;
+using System.Windows;
 
 namespace Meta.Log.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IViewFor<MainViewModel>
     {
-        int count = 0;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public MainViewModel ViewModel { get; set; }
+
+        object IViewFor.ViewModel
         {
-            count++;
-            CounterLabel.Content = $"Current count: {count}";
+            get => ViewModel; 
+            set => ViewModel = value as MainViewModel;
         }
     }
 }
