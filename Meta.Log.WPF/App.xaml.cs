@@ -5,6 +5,7 @@ using Serilog;
 using System;
 using System.Windows;
 using Meta.Log.Core.ViewModels;
+using ReactiveUI;
 
 namespace Meta.Log.WPF
 {
@@ -31,7 +32,7 @@ namespace Meta.Log.WPF
 
             _host.Start();
 
-            var mainWindow = _host.Services.GetService<Window>();
+            var mainWindow = _host.Services.GetService<ReactiveWindow<MainViewModel>>();
             mainWindow.Show();
         }
 

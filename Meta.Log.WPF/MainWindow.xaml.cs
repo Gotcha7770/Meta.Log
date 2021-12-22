@@ -1,6 +1,5 @@
 ﻿using Meta.Log.Core.ViewModels;
 using ReactiveUI;
-using System.Windows;
 
 namespace Meta.Log.WPF
 {
@@ -9,9 +8,12 @@ namespace Meta.Log.WPF
     /// </summary>
     public partial class MainWindow : ReactiveWindow<MainViewModel>
     {
-        public MainWindow()
+        public MainWindow(MainViewModel viewModel)
         {
-            InitializeComponent();
+            ViewModel = viewModel;
+            DataContext = viewModel;
+
+            InitializeComponent();            
         }
     }
 }
