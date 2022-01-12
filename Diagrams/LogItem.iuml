@@ -1,5 +1,4 @@
 @startuml
-'https://plantuml.com/class-diagram
 
 interface ILogItem {
     int LineNumber
