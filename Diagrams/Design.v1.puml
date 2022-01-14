@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface IParser
+interface IFormatter
+interface ISourceFactory
+interface ISourceCache
+interface ISearchEngine
+interface IFilterEngine
+interface ILogItem
+interface ILogSource
+
+ILogSource --o ILogItem
+ISourceFactory --* IParser
+ISourceFactory --* IFormatter
+ISourceFactory --> ILogSource
+ISourceCache --o ILogSource
+ISearchEngine --> ISourceCache
+ISearchEngine --> ILogSource
+IFilterEngine --> ILogSource
+
+@enduml
