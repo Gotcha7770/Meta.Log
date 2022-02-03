@@ -20,6 +20,15 @@
         <ResourceDictionary>
         </ResourceDictionary>
     </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OnOpen" />
+    </Window.CommandBindings>
+    
+    <Window.InputBindings>
+        <KeyBinding  Command="ApplicationCommands.Open"
+                     Gesture="CTRL+O"/>
+    </Window.InputBindings>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,12 +50,12 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem>
+            <MenuItem Command="Open">
                 <MenuItem.Icon>
                     <md:PackIcon Kind="FileMultipleOutline" HorizontalAlignment="Center" />
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Grid.Row="1">
+            <MenuItem Grid.Row="1" Command="Search">
                 <MenuItem.Icon>
                     <md:PackIcon Kind="Search" HorizontalAlignment="Center" />
                 </MenuItem.Icon>
